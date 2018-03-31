@@ -22,15 +22,18 @@ mongoimport --db saralta --drop --collection users --file samples/users.json
 nodemon index.js
 ```
 
+`npm install` also copies over the config sample, but uses UNIX's `cp`. If you're on Windows, you may have to do it manually for
+
 For Demonstration purpose, there is only **one user** available who is not explicity authenticated.
 
-Browse to [locahost:3000](locahost:3000) to view the basic app. 
+Browse to [locahost:3000](http://locahost:3000) to view the basic app. 
 
 ## Functionality Achieved
 
 * A RESTful and scalable backend written in Node.js.
 * Careful Error Handling in Forms API.
 * Through Validation in Forms API.
+* Dynamic Form Layouts via Database.
 * Layered Architecture to reduce redundancy and enhance design.
 * Neat code linting and checks kept in place with Grunt plugins.
 * Basic Document Submission Works.
@@ -39,6 +42,6 @@ Browse to [locahost:3000](locahost:3000) to view the basic app.
 
 * Authentication Middleware
 * User Registration/Login
-* Front End for Quick Access API
+* Front End for Quick Access API to get select details of User for quick viewing.
 * Pending Tests in Mocha
 * Some Structure in Front End
