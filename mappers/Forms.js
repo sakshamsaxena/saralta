@@ -9,7 +9,7 @@ let Form = mongoose.model('Form', formsSchema);
 let FormMapper = {};
 
 FormMapper.GetFormByType = function(_idForm) {
-	// 
+	return Form.findOne({_id: _idForm}).exec();
 }
 
 FormMapper.CreateNewForm = function(newForm) {

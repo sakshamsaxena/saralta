@@ -3,7 +3,11 @@
 */
 
 /* Core Modules */
+let m = require('mongoose');
 let express = require('express');
+let config = require('../config/config.js');
+let FormModel = require('../models/Forms.js');
+let sanitizeParam = require('../util/paramValidation/ParameterValidation.js');
 
 /* An instance of Router */
 let Forms = express.Router();
@@ -27,7 +31,29 @@ Forms.use(function(req, res, next) {
 		See the documentation for more on Form Types. [TODO]
 */
 Forms.get('/:Type', function(req, res) {
-	res.send(req.params.Type);
+
+	// Prepare Parameters
+	var id = sanitizeParam.ValidateFormType(req.params.Type);
+
+	// Connect here
+	m.connect(config.MongoURL);
+
+	// Process Logic
+	FormModel.GetFormLayout(id)
+		.then(function(layout) {
+			// Close connection (important!)
+			m.connection.close();
+
+			// Send response
+			res.json(layout);
+		})
+		.catch(function(err) {
+			// Close connection (important!)
+			m.connection.close();
+
+			// Send response
+			res.status(403).send("Error :\n\t" + err);
+		})
 });
 
 /**
