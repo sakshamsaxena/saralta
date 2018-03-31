@@ -5,21 +5,25 @@
 /* Core Modules */
 let m = require('mongoose');
 let express = require('express');
+var multer = require('multer');
 let config = require('../config/config.js');
 let FormModel = require('../models/Forms.js');
-let sanitizeParam = require('../util/paramValidation/ParameterValidation.js');
+let UserModel = require('../models/User.js');
 
-/* An instance of Router */
+/* Init */
 let Forms = express.Router();
+var upload = multer();
 
 /* Auth Middleware */
 Forms.use(function(req, res, next) {
 	next();
 });
 
-/*
-	Route Definitions
-*/
+/**
+
+	User Route Definitions
+
+**/
 
 /**
 	GET  /:Type
@@ -32,8 +36,8 @@ Forms.use(function(req, res, next) {
 */
 Forms.get('/:Type', function(req, res) {
 
-	// Prepare Parameters
-	var id = sanitizeParam.ValidateFormType(req.params.Type);
+	// Parameters
+	var id = req.params.Type;
 
 	// Connect here
 	m.connect(config.MongoURL);
@@ -71,9 +75,40 @@ Forms.get('/:Type', function(req, res) {
 		Possible Values : As per the respective Form Type Layout.
 		See the documentation for more on Form Types. [TODO]
 */
-Forms.post('/:Type', function(req, res) {
-	res.send(req.params.Type);
+Forms.post('/:Type', upload.array(), function(req, res) {
+
+	// Parameters
+	var type = req.params.Type;
+	var formData = JSON.parse(req.body.formData);
+	var id = "5abf858a7c13b07b162129d1";
+
+	// Connect here
+	m.connect(config.MongoURL);
+
+	// Process Logic
+	UserModel.SubmitForm(id, type, formData)
+		.then(function(doc) {
+			// Close connection (important!)
+			m.connection.close();
+
+			// Send response
+			res.json(doc);
+		})
+		.catch(function(err) {
+			// Close connection (important!)
+			m.connection.close();
+
+			// Send response
+			res.status(403).json({'error': err});
+		})
+	
 });
+
+/**
+
+	Admin Route Definitions
+	
+**/
 
 /**
 	PUT  /:Type

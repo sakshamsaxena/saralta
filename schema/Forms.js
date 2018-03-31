@@ -11,7 +11,7 @@ let Mixed = mongoose.Schema.Types.Mixed;
 
 let formsSchema = new Schema({
 	_id: Number,
-	FormType: {type: String},
+	FormType: String,
 	FormLayout: Mixed
 });
 

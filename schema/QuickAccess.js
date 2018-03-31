@@ -5,31 +5,12 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 let ObjectId = mongoose.Schema.Types.ObjectId;
+let Mixed = mongoose.Schema.Types.Mixed;
 
 let quickAccessSchema = {
-	_id: Number,
+	_id: ObjectId,
 	UserID: ObjectId,
-	Title: String,
-	Tags: [{
-		type: String
-	}],
-	Content: String,
-	Views: {
-		type: Number,
-		default: 1
-	},
-	Likes: {
-		type: Number,
-		default: 0
-	},
-	Dislikes: {
-		type: Number,
-		default: 0
-	},
-	PublishDate: {
-		type: Date,
-		default: Date.now
-	}
+	Items: [{type: Mixed}]
 };
 
 module.exports = new Schema(quickAccessSchema);

@@ -1,3 +1,6 @@
+/*
+	Utility to Validate URL Parameters
+*/
 
 let TypeValidator = require('./validators/FormType.js');
 
