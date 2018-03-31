@@ -4,9 +4,6 @@
 
 let mongoose = require('mongoose');
 let formsSchema = require('../schema/Forms.js');
-
-// mongoose.connect('mongodb://localhost:27017/saralta');
-
 let Form = mongoose.model('Form', formsSchema);
 
 let FormMapper = {};
@@ -29,3 +26,4 @@ FormMapper.UpdateOldForm = function(newForm) {
 // 	console.log(form);
 // 	mongoose.connection.close();
 // });
+module.exports = FormMapper;

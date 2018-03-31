@@ -4,6 +4,7 @@
   "description": "Saralta (Hindi for \"ease\") is an online portal where any user can upload their official documents for easy viewing, management, and comes handy in applying directly for various Official Government purposes.",
   "main": "index.js",
   "scripts": {
+    "postinstall": "cp config/config.sample.js config/config.js",
     "test": "mocha"
   },
   "repository": {
