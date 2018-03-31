@@ -11,6 +11,7 @@ const quickAccess = require('./routes/QuickAccess.js');
 const app = express();
 
 /* Basic Middlewares */
+app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('json spaces', 4);
@@ -25,6 +26,9 @@ app.use(function(req, res, next) {
 });
 
 // Application Routes
+app.get('/', function(req, res) {
+	res.render('index.html');
+})
 app.use('/Auth', auth);
 app.use('/Forms', forms);
 app.use('/QuickAccess', quickAccess);
