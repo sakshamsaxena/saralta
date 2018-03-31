@@ -37,10 +37,11 @@ UserModel.SubmitForm = function(_userId, _formId, _formData) {
 				return UserMapper.AddDocument(_userId, formType, formData);
 			})
 			.then(function(doc) {
-				if(doc)
+				if (doc) {
 					resolve(doc);
-				else
+				} else {
 					reject('Operation Failed');
+				}
 			});
 	});
 };

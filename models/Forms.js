@@ -15,16 +15,16 @@ FormModel.GetFormTypes = function() {
 		FormsMapper.GetAllFormTypes()
 			.then(function(forms) {
 				var types = [];
-				for(var i = 0; i < forms.length; i++) {
+				for (var i = 0; i < forms.length; i++) {
 					types.push(forms[i].FormType);
 				}
 				resolve(types);
 			})
 			.catch(function(err) {
 				reject(err);
-			})
-	})
-}
+			});
+	});
+};
 
 FormModel.GetFormLayout = function(_id) {
 
@@ -82,7 +82,7 @@ FormModel.UpdateFormLayout = function(_id, _formData) {
 			.catch(function(err) {
 				reject(err);
 			});
-	})
-}
+	});
+};
 
 module.exports = FormModel;

@@ -11,7 +11,7 @@ let UserMapper = {};
 
 UserMapper.AddDocument = function(user, type, formData) {
 
-	return User.findByIdAndUpdate(user, {"$push": {
+	return User.findByIdAndUpdate(user, {'$push': {
 		'Documents': {
 			'Type': type,
 			'Doc': formData

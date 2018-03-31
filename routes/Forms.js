@@ -107,10 +107,8 @@ Forms.post('/:Type', upload.array(), function(req, res) {
 
 	// Parameters
 	var type = req.params.Type;
-	console.log('form data')
-	console.log(req.body);
 	var formData = req.body;
-	var id = "5abf8b814f81c60226b9dcae";
+	var id = '5abf8b814f81c60226b9dcae';
 
 	// Connect here
 	m.connect(config.MongoURL);
@@ -130,14 +128,13 @@ Forms.post('/:Type', upload.array(), function(req, res) {
 
 			// Send response
 			res.status(403).json({'error': err});
-		})
-	
+		});
 });
 
 /**
 
 	Admin Route Definitions
-	
+
 **/
 
 /**
@@ -156,7 +153,7 @@ Forms.post('/:Type', upload.array(), function(req, res) {
 		See the documentation for more on Form Types. [TODO]
 */
 Forms.put('/:Type', function(req, res) {
-	
+
 	// Parameters
 	var type = req.params.Type;
 	var formData = JSON.parse(req.body.formData);
@@ -179,7 +176,7 @@ Forms.put('/:Type', function(req, res) {
 
 			// Send response
 			res.status(403).json({'error': err});
-		})
+		});
 });
 
 /**

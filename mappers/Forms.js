@@ -10,7 +10,7 @@ let FormMapper = {};
 
 FormMapper.GetAllFormTypes = function() {
 	return Form.find({}).sort({_id: 'asc'}).exec();
-}
+};
 
 FormMapper.GetFormByType = function(id) {
 	return Form.findOne({_id: id}).exec();
