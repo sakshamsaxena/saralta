@@ -26,6 +26,34 @@ Forms.use(function(req, res, next) {
 **/
 
 /**
+	GET  /
+
+	Public Route to fetch all Form Types.
+*/
+Forms.get('/', function(req, res) {
+
+	// Connect here
+	m.connect(config.MongoURL);
+
+	// Process Logic
+	FormModel.GetFormTypes()
+		.then(function(types) {
+			// Close connection (important!)
+			m.connection.close();
+
+			// Send response
+			res.json(types);
+		})
+		.catch(function(err) {
+			// Close connection (important!)
+			m.connection.close();
+
+			// Send response
+			res.status(403).json({'error': err});
+		});
+});
+
+/**
 	GET  /:Type
 
 	Protected Route to fetch a form by Type.
@@ -79,7 +107,9 @@ Forms.post('/:Type', upload.array(), function(req, res) {
 
 	// Parameters
 	var type = req.params.Type;
-	var formData = JSON.parse(req.body.formData);
+	console.log('form data')
+	console.log(req.body);
+	var formData = req.body;
 	var id = "5abf858a7c13b07b162129d1";
 
 	// Connect here

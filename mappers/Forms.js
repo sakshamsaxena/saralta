@@ -8,6 +8,10 @@ let Form = mongoose.model('Form', formsSchema);
 
 let FormMapper = {};
 
+FormMapper.GetAllFormTypes = function() {
+	return Form.find({}).exec();
+}
+
 FormMapper.GetFormByType = function(id) {
 	return Form.findOne({_id: id}).exec();
 };

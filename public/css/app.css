@@ -12,15 +12,6 @@
 .diapo:nth-of-type(1) {
 	background-image: url(../imgs/HBackground.jpg);
 }
-.diapo:nth-of-type(2) {
-	background-image: url(../imgs/ABackground.jpg);
-}
-.diapo:nth-of-type(3) {
-	background-image: url(../imgs/BBackground.jpg)
-}
-.diapo:nth-of-type(4) {
-	background-image: url(../imgs/CBackground.jpg)
-}
 .diapo,
 section.menu {
 	background-attachment: fixed;
@@ -43,7 +34,17 @@ section.menu {
 	margin-top: 3em;
 	margin-bottom: 1em;
 }
-
+#docForm {
+	width: 50%;
+	margin: 0 auto;
+}
+fieldset {
+	border: 2px solid black;
+}
+#formList li {
+	text-decoration: underline;
+	cursor: pointer;
+}
 .contact {
 	width: 90%;
 	margin-left: auto;
@@ -79,8 +80,9 @@ blockquote {
 	text-align: justify;
 	border-left-color: #1976d2
 }
-.about p.lead {
+p.lead {
 	font-size: 1.2em;
+	margin-top: 1em
 }
 .menu-button {
 	position: fixed;

@@ -8,6 +8,24 @@ let vaildateParam = require('../util/paramValidation/ParameterValidation.js');
 
 let FormModel = {};
 
+FormModel.GetFormTypes = function() {
+
+	return new Promise(function(resolve, reject) {
+
+		FormsMapper.GetAllFormTypes()
+			.then(function(forms) {
+				var types = [];
+				for(var i = 0; i < forms.length; i++) {
+					types.push(forms[i].FormType);
+				}
+				resolve(types);
+			})
+			.catch(function(err) {
+				reject(err);
+			})
+	})
+}
+
 FormModel.GetFormLayout = function(_id) {
 
 	return new Promise(function(resolve, reject) {
