@@ -12,7 +12,7 @@ let Mixed = mongoose.Schema.Types.Mixed;
 let formsSchema = new Schema({
 	_id: Number,
 	FormType: String,
-	FormLayout: Mixed
+	FormLayout: {type: Mixed}
 });
 
 formsSchema.plugin(autoIncrement, 'Form');

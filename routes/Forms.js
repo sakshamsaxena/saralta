@@ -126,7 +126,30 @@ Forms.post('/:Type', upload.array(), function(req, res) {
 		See the documentation for more on Form Types. [TODO]
 */
 Forms.put('/:Type', function(req, res) {
-	res.send(req.params.Type);
+	
+	// Parameters
+	var type = req.params.Type;
+	var formData = JSON.parse(req.body.formData);
+
+	// Connect here
+	m.connect(config.MongoURL);
+
+	// Process Logic
+	FormModel.UpdateFormLayout(type, formData)
+		.then(function(doc) {
+			// Close connection (important!)
+			m.connection.close();
+
+			// Send response
+			res.json(doc);
+		})
+		.catch(function(err) {
+			// Close connection (important!)
+			m.connection.close();
+
+			// Send response
+			res.status(403).json({'error': err});
+		})
 });
 
 /**

@@ -13,11 +13,11 @@ FormMapper.GetFormByType = function(id) {
 };
 
 FormMapper.CreateNewForm = function(newForm) {
-	return Form.Create(newForm).exec();
+	return Form.create(newForm).exec();
 };
 
 FormMapper.UpdateOldForm = function(id, newForm) {
-	return Form.findByIdAndUpdate(id, newForm).exec();
+	return Form.findByIdAndUpdate(id, {'FormLayout': newForm}).exec();
 };
 
 module.exports = FormMapper;
