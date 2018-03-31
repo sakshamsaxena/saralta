@@ -9,18 +9,19 @@ let FormModel = {};
 FormModel.GetFormLayout = function(id) {
 
 	return new Promise(function(resolve, reject) {
-		if(typeof id === 'string') {
+		if (typeof id === 'string') {
 			reject(id);
 		} else {
 			FormsMapper.GetFormByType(id)
 				.then(function(form) {
-					if(form === null)
-						reject("Invalid Form Type");
-					else
+					if (form === null) {
+						reject('Invalid Form Type');
+					} else {
 						resolve(form.FormLayout);
+					}
 				});
 		}
-	})
-}
+	});
+};
 
 module.exports = FormModel;

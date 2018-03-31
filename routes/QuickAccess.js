@@ -10,5 +10,4 @@ let QuickAccess = express.Router();
 
 /* Route Definitions */
 
-
 module.exports = QuickAccess;

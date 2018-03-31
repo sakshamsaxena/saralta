@@ -10,5 +10,4 @@ let Auth = express.Router();
 
 /* Route Definitions */
 
-
 module.exports = Auth;

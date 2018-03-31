@@ -45,7 +45,7 @@ describe('Forms API', function() {
 		});
 
 	});
-	
+
 	describe('while updating forms', function() {
 
 		it('should update an exiting form with Admin Auth', function() {
@@ -69,7 +69,7 @@ describe('Forms API', function() {
 		});
 
 	});
-	
+
 	describe('while creating forms', function() {
 
 		it('should create a new form with Admin Auth', function() {

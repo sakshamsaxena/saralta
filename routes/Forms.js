@@ -15,9 +15,9 @@ let Forms = express.Router();
 /* Auth Middleware */
 Forms.use(function(req, res, next) {
 	next();
-})
+});
 
-/* 
+/*
 	Route Definitions
 */
 
@@ -52,8 +52,8 @@ Forms.get('/:Type', function(req, res) {
 			m.connection.close();
 
 			// Send response
-			res.status(403).send("Error :\n\t" + err);
-		})
+			res.status(403).json({'error': err});
+		});
 });
 
 /**

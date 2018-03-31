@@ -8,22 +8,16 @@ let Form = mongoose.model('Form', formsSchema);
 
 let FormMapper = {};
 
-FormMapper.GetFormByType = function(_idForm) {
-	return Form.findOne({_id: _idForm}).exec();
-}
+FormMapper.GetFormByType = function(id) {
+	return Form.findOne({_id: id}).exec();
+};
 
 FormMapper.CreateNewForm = function(newForm) {
-	// 
-}
+	return Form.Create(newForm).exec();
+};
 
-FormMapper.UpdateOldForm = function(newForm) {
-	//
-}
+FormMapper.UpdateOldForm = function(id, newForm) {
+	return Form.findByIdAndUpdate(id, newForm).exec();
+};
 
-// Form.create({FormType: "VoterLicense", FormLayout: {foo: "Bar"}}, function(err, form) {
-// 	if (err)
-// 		throw err;
-// 	console.log(form);
-// 	mongoose.connection.close();
-// });
 module.exports = FormMapper;

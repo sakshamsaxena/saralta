@@ -7,19 +7,23 @@ module.exports = function(grunt) {
 				reporter: require('jshint-stylish')
 			},
 			target: [
-				'routes/**/*.js',
 				'mappers/**/*.js',
+				'models/**/*.js',
+				'routes/**/*.js',
 				'schema/**/*.js',
 				'test/**/*.js',
+				'util/**/*.js',
 				'./*.js'
 			]
 		},
 		jscs: {
 			src: [
-				'routes/**/*.js',
 				'mappers/**/*.js',
+				'models/**/*.js',
+				'routes/**/*.js',
 				'schema/**/*.js',
 				'test/**/*.js',
+				'util/**/*.js',
 				'./*.js'
 			],
 			options: {
